@@ -106,9 +106,9 @@ def get_index_order(counts, method=None, metric=None):
 
 def run():
     """Primary entrypoint."""
-    num = st.sidebar.slider("input", 0, 100)
-    text = st.sidebar.text_input()
-    st. write(f"{text} {num}")
+    num = st.sidebar.slider("num input", 0, 100)
+    text = st.sidebar.text_input("text input")
+    st.write(f"{text} {num}")
 
     # Read the counts specified by the user
     # counts = read_url(
