@@ -13,7 +13,7 @@ import requests
 if importlib.util.find_spec("pyodide") is not None:
     from pyodide.http import open_url
 
-st.title("Demo - Interactive Heatmap")
+st.title("Demo - Interactive Print of Text + Number ")
 
 @st.cache(show_spinner=False)
 def read_url(url:str, **kwargs):
