@@ -106,81 +106,84 @@ def get_index_order(counts, method=None, metric=None):
 
 def run():
     """Primary entrypoint."""
+    num = st.sidebar.slider("input", 0, 100)
+    text = st.sidebar.text_input()
+    st. write(f"{text} {num}")
 
     # Read the counts specified by the user
-    counts = read_url(
-        st.sidebar.text_input(
-            "Counts Table",
-            value="https://raw.githubusercontent.com/BRITE-REU/programming-workshops/master/source/workshops/02_R/files/airway_scaledcounts.csv",
-            help="Read the abundance values from a CSV (URL) which contains a header row and index column"
-        ),
-        index_col=0
-    )
+    # counts = read_url(
+    #     st.sidebar.text_input(
+    #         "Counts Table",
+    #         value="https://raw.githubusercontent.com/BRITE-REU/programming-workshops/master/source/workshops/02_R/files/airway_scaledcounts.csv",
+    #         help="Read the abundance values from a CSV (URL) which contains a header row and index column"
+    #     ),
+    #     index_col=0
+    # )
 
-    # Render the plot
-    plot(
-        counts,
-        top_n=st.sidebar.number_input(
-            "Show top N rows",
-            help="Only the subset of rows will be shown which have the highest average values",
-            min_value=1000,
-            max_value=counts.shape[0]
-        ),
-        norm=st.sidebar.selectbox(
-            "Normalize values by",
-            help="The raw values in the table can be normalized by the proportion of each column, or by calculating the centered log transform",
-            index=2,
-            options=[
-                "none",
-                "prop",
-                "CLR"
-            ]
-        ),
-        method=st.sidebar.selectbox(
-            "Ordering - method",
-            help="The order of rows will be set by linkage clustering using this method",
-            index=6,
-            options=[
-                "average",
-                "complete",
-                "single",
-                "weighted",
-                "centroid",
-                "median",
-                "ward"
-            ]
-        ),
-        metric=st.sidebar.selectbox(
-            "Ordering - metric",
-            help="The order of rows will be set by linkage clustering using this distance metric",
-            index=7,
-            options=[
-                "braycurtis",
-                "canberra",
-                "chebyshev",
-                "cityblock",
-                "correlation",
-                "cosine",
-                "dice",
-                "euclidean",
-                "hamming",
-                "jaccard",
-                "jensenshannon",
-                "kulczynski1",
-                "mahalanobis",
-                "matching",
-                "minkowski",
-                "rogerstanimoto",
-                "russellrao",
-                "seuclidean",
-                "sokalmichener",
-                "sokalsneath",
-                "sqeuclidean",
-                "yule"
+    # # Render the plot
+    # plot(
+    #     counts,
+    #     top_n=st.sidebar.number_input(
+    #         "Show top N rows",
+    #         help="Only the subset of rows will be shown which have the highest average values",
+    #         min_value=1000,
+    #         max_value=counts.shape[0]
+    #     ),
+    #     norm=st.sidebar.selectbox(
+    #         "Normalize values by",
+    #         help="The raw values in the table can be normalized by the proportion of each column, or by calculating the centered log transform",
+    #         index=2,
+    #         options=[
+    #             "none",
+    #             "prop",
+    #             "CLR"
+    #         ]
+    #     ),
+    #     method=st.sidebar.selectbox(
+    #         "Ordering - method",
+    #         help="The order of rows will be set by linkage clustering using this method",
+    #         index=6,
+    #         options=[
+    #             "average",
+    #             "complete",
+    #             "single",
+    #             "weighted",
+    #             "centroid",
+    #             "median",
+    #             "ward"
+    #         ]
+    #     ),
+    #     metric=st.sidebar.selectbox(
+    #         "Ordering - metric",
+    #         help="The order of rows will be set by linkage clustering using this distance metric",
+    #         index=7,
+    #         options=[
+    #             "braycurtis",
+    #             "canberra",
+    #             "chebyshev",
+    #             "cityblock",
+    #             "correlation",
+    #             "cosine",
+    #             "dice",
+    #             "euclidean",
+    #             "hamming",
+    #             "jaccard",
+    #             "jensenshannon",
+    #             "kulczynski1",
+    #             "mahalanobis",
+    #             "matching",
+    #             "minkowski",
+    #             "rogerstanimoto",
+    #             "russellrao",
+    #             "seuclidean",
+    #             "sokalmichener",
+    #             "sokalsneath",
+    #             "sqeuclidean",
+    #             "yule"
 
-           ]
-        ),
-    )
+    #        ]
+    #     ),
+    # )
 
 if __name__ == "__main__":
 
