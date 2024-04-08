@@ -1,3 +1,6 @@
+import micropip
+await micropip.install("requests")
+
 import streamlit as st
 import numpy as np
 import pandas as pd
